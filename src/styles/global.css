@@ -5,7 +5,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 body {
-    display: flex;
-    justify-content: center;
+
     background: #121427;
 }

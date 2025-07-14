@@ -3,34 +3,32 @@ import { Image } from 'astro:assets';
 import logo from '../assets/img/logo.svg';
 ---
 
-<header class='flex justify-between'>
+<header class='flex justify-between items-center h-full p-[20px] px-[40px] font-bold'>
 	<Image
 		src={logo}
 		alt='logo de Cristian Montoya'
-		class='w-12 h-12'
-		width={48}
-		height={48}
+		class='w-[69px] h-[69px]'
 		loading='eager'
 	/>
 	<nav>
 		<a
 			href='/'
-			class='text-[#43CFF4]'
+			class='text-[#43CFF4] text-[32px] mx-[20px]'
 			>Home</a
 		>
 		<a
 			href='/experience'
-			class='text-[#43CFF4]'
+			class='text-[#43CFF4] text-[32px] mx-[20px]'
 			>Experience</a
 		>
 		<a
 			href='/about-me'
-			class='text-[#43CFF4]'
+			class='text-[#43CFF4] text-[32px] mx-[20px]'
 			>About me</a
 		>
 		<a
 			href='/projects'
-			class='text-[#43CFF4]'
+			class='text-[#43CFF4] text-[32px] mx-[20px]'
 			>Projects</a
 		>
 	</nav>
