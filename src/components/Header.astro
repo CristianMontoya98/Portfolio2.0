@@ -1,13 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/img/logo.svg';
+---
+
 <header class='flex justify-between'>
-	<img
-		src='src/assets/img/logo.svg'
+	<Image
+		src={logo}
 		alt='logo de Cristian Montoya'
-		class='w-10 h-10'
+		class='w-12 h-12'
+		width={48}
+		height={48}
+		loading='eager'
 	/>
 	<nav>
-		<a href='/'>Home</a>
-		<a href='/experience'>Experience</a>
-		<a href='/about-me'>About me</a>
-		<a href='/projects'>Projects</a>
+		<a
+			href='/'
+			class='text-[#43CFF4]'
+			>Home</a
+		>
+		<a
+			href='/experience'
+			class='text-[#43CFF4]'
+			>Experience</a
+		>
+		<a
+			href='/about-me'
+			class='text-[#43CFF4]'
+			>About me</a
+		>
+		<a
+			href='/projects'
+			class='text-[#43CFF4]'
+			>Projects</a
+		>
 	</nav>
 </header>
