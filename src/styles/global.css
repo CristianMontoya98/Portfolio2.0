@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 @import "tailwindcss";
 :root{
     color-scheme: light dark;
 }
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Onest Variable', sans-serif;
 }
 body {
-    display: flex;
-    justify-content: center;
     background: #121427;
+    min-height: 100vh;
 }
 .blue-text {
     color: #43CFF4;
