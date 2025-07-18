@@ -9,12 +9,11 @@ This is my personal front end web portfolio, here you can see:
 - 🚀 [Astro js](https://astro.build)
 - 💅 [Tailwind](https://tailwindcss.com)
 
-## ✨ Functionalities
+## ✨ Sections
 
-- 🧾 Form to put the card data.
-- 💳 Interactive preview in real time in the card
-- 📱 Responsive design
-- 🔒 Basic form validation
+- 💼 Experience
+- 🧔‍♂️ About me
+- 💻 Projects
 
 ## ⚙️ Install and local use
 ## 1. Clone the repository
