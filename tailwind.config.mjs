@@ -5,11 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#FFFF',
-        'secondary': '#1E213D',
-        'tertiary': '#2E3047',
-        'quaternary': '#3A506B',
-        'quinary': '#5BC0EB',
+       
       }
     },
   },
