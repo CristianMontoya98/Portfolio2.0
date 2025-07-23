@@ -12,7 +12,7 @@ import menu from '../../assets/img/menu.svg';
 		loading='eager'
 		draggable='false'
 	/>
-	<nav class='flex flex-row gap-x-[30px] text-[32px]'>
+	<nav>
 		<Image
 			src={menu}
 			alt='icono menu'
@@ -20,25 +20,27 @@ import menu from '../../assets/img/menu.svg';
 			loading='eager'
 			draggable='false'
 		/>
-		<!-- <a
-			href='/'
-			class='blue-text'
-			>Home</a
-		>
-		<a
-			href='/experience'
-			class='blue-text'
-			>Experience</a
-		>
-		<a
-			href='/about-me'
-			class='blue-text'
-			>About me</a
-		>
-		<a
-			href='/projects'
-			class='blue-text'
-			>Projects</a
-		> -->
+		<div class='flex-row gap-x-[30px] text-[32px] hidden sm:flex'>
+			<a
+				href='#home'
+				class='blue-text'
+				>Home</a
+			>
+			<a
+				href='#experience'
+				class='blue-text'
+				>Experience</a
+			>
+			<a
+				href='/about-me'
+				class='blue-text'
+				>About me</a
+			>
+			<a
+				href='/projects'
+				class='blue-text'
+				>Projects</a
+			>
+		</div>
 	</nav>
 </header>
