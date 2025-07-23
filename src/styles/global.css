@@ -4,6 +4,7 @@
     color-scheme: light dark;
 }
 html {
+    scroll-behavior: smooth;
     font-family: 'Onest Variable', sans-serif;
 }
 body {
