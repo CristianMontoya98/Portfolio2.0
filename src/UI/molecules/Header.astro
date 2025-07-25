@@ -4,7 +4,7 @@ import logo from '../../assets/img/logo.svg';
 import menu from '../../assets/img/menu.svg';
 ---
 
-<header class='flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20'>
+<header class='backdrop-blur-md shadow-lg flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20'>
 	<Image
 		src={logo}
 		alt='logo de Cristian Montoya'
@@ -12,7 +12,7 @@ import menu from '../../assets/img/menu.svg';
 		loading='eager'
 		draggable='false'
 	/>
-	<nav>
+	<nav id='nav'>
 		<Image
 			src={menu}
 			alt='icono menu'
