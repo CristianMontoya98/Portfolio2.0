@@ -1,6 +1,7 @@
 ---
 import DownloadIcon from '../../assets/icons/DownloadIcon.astro';
 import Button from '../atoms/Button.astro';
+import Timeline from '../molecules/Timeline.astro';
 ---
 
 <section
@@ -15,45 +16,5 @@ import Button from '../atoms/Button.astro';
 		iconClass='font-bold w-[18px] h-[18px]'
 		isNeon={true}
 	/>
-
-	<ol class='relative border-s border-[#87E6FF] ml-3 mt-5'>
-		<li class='mb-10 ms-4'>
-			<div class='absolute w-3 h-3 bg-[#DDF4FB] rounded-full mt-1.5 -start-1.5 border border-[#43CFF4] shadow-[0px_0px_20px_3px_#43CFF4]'></div>
-			<time class='mb-1 text-sm font-bold leading-none text-[#456787]'>January 2023 - Curently</time>
-			<h3 class='text-lg font-semibold text-[#DDF4FB]'>
-				Software developer at <a
-					href='https://www.ias.com.co/'
-					target='_blank'
-					rel='noreferrer'
-					class='blue-text underline cursor-pointer'
-					>ias Software</a
-				> (Angular).
-			</h3>
-			<p class='mb-4 text-base font-normal text-gray-400'>
-				Development of user interfaces with angular based on user stories, implementing clean architecture, unit testing with jest, styles
-				with sass and good coding practices.
-			</p>
-		</li>
-		<li class='mb-10 ms-4'>
-			<div class='absolute w-3 h-3 bg-[#DDF4FB] rounded-full mt-1.5 -start-1.5 border border-[#43CFF4] shadow-[0px_0px_20px_3px_#43CFF4]'></div>
-			<time class='mb-1 text-sm font-bold leading-none text-[#456787]'>July 2022 - January 2023</time>
-			<h3 class='text-lg font-semibold text-[#DDF4FB]'>
-				Front-end developer at <a
-					href='https://www.accenture.com'
-					target='_blank'
-					rel='noreferrer'
-					class='blue-text underline cursor-pointer'
-					>Accenture</a
-				> (Angular).
-			</h3>
-			<p class='text-base font-normal text-gray-500 dark:text-gray-400'>
-				Development of user interfaces with angular based on user stories, use of micro front-ends, unit testing with karma and styles with
-				sass.
-			</p>
-		</li>
-	</ol>
-
-	<br />
-	<br />
-	<br />
+	<Timeline />
 </section>
