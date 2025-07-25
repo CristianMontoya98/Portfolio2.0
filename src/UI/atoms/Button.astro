@@ -4,7 +4,8 @@ import DownloadIcon from '../../assets/icons/DownloadIcon.astro';
 const { text, icon: Icon, iconClass, isNeon } = Astro.props;
 let buttonStyles = 'flex items-center justify-center text-[20px] font-bold rounded-full gap-2 cursor-pointer w-[189px] h-[34px]';
 if (isNeon) {
-	buttonStyles += ' shadow-[0px_0px_18px_0px_#43CFF4] bg-[#121427]  text-[#43CFF4]  hover:bg-[#43CFF4] hover:text-[#121427]';
+	buttonStyles +=
+		' hover:scale-120 duration-200 ease shadow-[0px_0px_18px_0px_#43CFF4] bg-[#121427]  text-[#43CFF4]  hover:bg-[#43CFF4] hover:text-[#121427]';
 }
 ---
 
