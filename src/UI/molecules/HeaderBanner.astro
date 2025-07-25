@@ -1,0 +1,40 @@
+---
+import LinkedinIcon from '../../assets/icons/LinkedinIcon.astro';
+import GithubIcon from '../../assets/icons/GithubIcon.astro';
+import GmailIcon from '../../assets/icons/GmailIcon.astro';
+---
+
+<div
+	class='bg-cover bg-[url(src/assets/img/headermobile.webp)] sm:bg-[url(src/assets/img/header.webp)] flex flex-col justify-center items-center h-[100dvh] font-bold text-[23px] sm:text-[48px] text-center'
+>
+	<div class='absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-10 bg-[rgba(8,9,17,0.85)]'>
+		<h1 class='text-[#DDF4FB]'>Cristian Montoya <span class='blue-text'>Front-end</span></h1>
+		<h2 class='text-[#DDF4FB]'>web developer</h2>
+		<div class='flex items-center justify-center gap-3'>
+			<a
+				href='https://www.linkedin.com/in/cristian-montoya-lopez'
+				target='_blank'
+				aria-label='Linkedin'
+				><LinkedinIcon
+					class='text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_4px_#43CFF4]'
+				/></a
+			>
+			<a
+				href='https://github.com/CristianMontoya98?tab=overview&from=2025-07-01&to=2025-07-23'
+				target='_blank'
+				aria-label='Github'
+				><GithubIcon
+					class='text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_8px_#43CFF4]'
+				/></a
+			>
+			<a
+				href='mailto:chrimonlo@gmail.com'
+				target='_blank'
+				aria-label='Gmail'
+				><GmailIcon
+					class='text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_8px_#43CFF4]'
+				/></a
+			>
+		</div>
+	</div>
+</div>
