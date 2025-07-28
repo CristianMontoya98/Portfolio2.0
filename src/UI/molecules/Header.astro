@@ -6,7 +6,7 @@ import menu from '../../assets/img/menu.svg';
 
 <header
 	id='header'
-	class='backdrop-blur-md shadow-lg flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20 transition-transform duration-300'
+	class='flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20 transition-transform duration-300'
 >
 	<Image
 		src={logo}
@@ -57,8 +57,12 @@ import menu from '../../assets/img/menu.svg';
 
 		if (scrollTop <= 100) {
 			header?.classList.remove('-translate-y-full');
+			header?.classList.remove('backdrop-blur-md', 'shadow-lg');
 			return;
 		}
+
+		header?.classList.add('backdrop-blur-md', 'shadow-lg');
+
 		if (scrollTop > lastScrollTop) {
 			header?.classList.add('-translate-y-full');
 		} else {
