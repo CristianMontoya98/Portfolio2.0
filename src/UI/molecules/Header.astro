@@ -4,7 +4,10 @@ import logo from '../../assets/img/logo.svg';
 import menu from '../../assets/img/menu.svg';
 ---
 
-<header class='backdrop-blur-md shadow-lg flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20'>
+<header
+	id='header'
+	class='backdrop-blur-md shadow-lg flex justify-between items-center w-full pt-2 sm:p-[20px] sm:px-[40px] font-bold fixed top-0 z-20 transition-transform duration-300'
+>
 	<Image
 		src={logo}
 		alt='logo de Cristian Montoya'
@@ -44,3 +47,24 @@ import menu from '../../assets/img/menu.svg';
 		</div>
 	</nav>
 </header>
+
+<script>
+	let lastScrollTop = 0;
+	const header = document.getElementById('header');
+
+	window.addEventListener('scroll', () => {
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+		if (scrollTop <= 100) {
+			header?.classList.remove('-translate-y-full');
+			return;
+		}
+		if (scrollTop > lastScrollTop) {
+			header?.classList.add('-translate-y-full');
+		} else {
+			header?.classList.remove('-translate-y-full');
+		}
+
+		lastScrollTop = scrollTop;
+	});
+</script>
