@@ -2,6 +2,7 @@
 import LinkedinIcon from '../../assets/icons/LinkedinIcon.astro';
 import GithubIcon from '../../assets/icons/GithubIcon.astro';
 import GmailIcon from '../../assets/icons/GmailIcon.astro';
+import SocialButton from '../atoms/Social-button.astro';
 ---
 
 <div
@@ -11,58 +12,18 @@ import GmailIcon from '../../assets/icons/GmailIcon.astro';
 		<h1 class='text-[#DDF4FB]'>Cristian Montoya</h1>
 		<h2 class='text-[#DDF4FB] sm:text-[25px] text-[18px]'><span class='blue-text'>Front-end</span> web developer</h2>
 		<div class='flex items-center justify-center gap-3'>
-			<div class='group relative'>
-				<a
-					href='https://www.linkedin.com/in/cristian-montoya-lopez'
-					target='_blank'
-					aria-label='Linkedin'
-				>
-					<LinkedinIcon
-						class='group relative text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_4px_#43CFF4]'
-					/>
-				</a>
-				<span
-					class='absolute -bottom-10 left-[50%] -translate-x-[50%]
-				z-20 origin-left scale-0 px-3 rounded-lg bg-[#DDF4FB] py-2 text-sm font-bold
-				shadow-md transition-all duration-200 ease-in-out
-				group-hover:scale-100 text-[#121427] drop-shadow-[0_0_4px_#43CFF4]'
-					>LinkedIn</span
-				>
-			</div>
-			<div class='group relative'>
-				<a
-					href='https://github.com/CristianMontoya98?tab=overview&from=2025-07-01&to=2025-07-23'
-					target='_blank'
-					aria-label='Github'
-					><GithubIcon
-						class='text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_8px_#43CFF4]'
-					/></a
-				>
-				<span
-					class='absolute -bottom-10 left-[50%] -translate-x-[50%]
-				z-20 origin-left scale-0 px-3 rounded-lg bg-[#DDF4FB] py-2 text-sm font-bold
-				shadow-md transition-all duration-200 ease-in-out
-				group-hover:scale-100 text-[#121427] drop-shadow-[0_0_4px_#43CFF4]'
-					>Github</span
-				>
-			</div>
-			<div class='group relative'>
-				<a
-					href='mailto:chrimonlo@gmail.com'
-					target='_blank'
-					aria-label='Gmail'
-					><GmailIcon
-						class='text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_8px_#43CFF4]'
-					/></a
-				>
-				<span
-					class='absolute -bottom-10 left-[50%] -translate-x-[50%]
-				z-20 origin-left scale-0 px-3 rounded-lg bg-[#DDF4FB] py-2 text-sm font-bold
-				shadow-md transition-all duration-200 ease-in-out
-				group-hover:scale-100 text-[#121427] drop-shadow-[0_0_4px_#43CFF4]'
-					>chrimonlo@gmail.com</span
-				>
-			</div>
+			<SocialButton
+				text='LinkedIn'
+				icon={LinkedinIcon}
+			/>
+			<SocialButton
+				text='Github'
+				icon={GithubIcon}
+			/>
+			<SocialButton
+				text='chrimonlo@gmail.com'
+				icon={GmailIcon}
+			/>
 		</div>
 	</div>
 </div>
