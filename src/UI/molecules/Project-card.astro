@@ -5,16 +5,24 @@ import ReactIcon from '../../assets/icons/ReactIcon.astro';
 const { bgImage, title } = Astro.props;
 ---
 
-<div class={`bg-cover ${bgImage} w-[437px] h-[350px] rounded-lg border-2 border-[#3A556E] flex flex-col items-center justify-between p-2`}>
+<div class={`bg-cover ${bgImage} w-[437px] h-[350px] rounded-[20px] flex flex-col items-center p-2`}>
 	<h3 class='text-[#43CFF4] text-[20px] bg-[#121427] px-[35px] py-1 rounded-full border-1 border-[#3A556E]'>{title}</h3>
-	<div class='flex gap-2'>
-		<div class='text-[16px] w-[102px] bg-[#3DB8DA] text-[#121427] font-bold rounded-md px-1 py-1 mt-4 flex items-center justify-center gap-2'>
+	<div class='flex gap-3'>
+		<div class='text-[14px] text-[#43CFF4] font-bold mt-4 flex flex-col items-center justify-center gap-2'>
 			<ReactIcon class='w-6 h-6' />
 			<p>React js</p>
 		</div>
-		<div class='text-[16px] w-[102px] bg-[#3DB8DA] text-[#121427] font-bold rounded-md px-1 py-1 mt-4 flex items-center justify-center gap-2'>
+		<div class='text-[14px] text-[#43CFF4] font-bold mt-4 flex flex-col items-center justify-center gap-2'>
 			<CssIcon class='w-6 h-6' />
 			<p>Css</p>
 		</div>
+		<!-- <div class='text-[16px] w-[102px] bg-[#43CFF4] text-[#121427] font-bold rounded-md px-1 py-1 mt-4 flex items-center justify-center gap-2'>
+			<ReactIcon class='w-6 h-6' />
+			<p>React js</p>
+		</div> -->
+		<!-- <div class='text-[16px] w-[102px] bg-[#43CFF4] text-[#121427] font-bold rounded-md px-1 py-1 mt-4 flex items-center justify-center gap-2'>
+			<CssIcon class='w-6 h-6' />
+			<p>Css</p>
+		</div> -->
 	</div>
 </div>
