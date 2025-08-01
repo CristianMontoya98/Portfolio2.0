@@ -1,0 +1,24 @@
+---
+const { text, icon: Icon } = Astro.props;
+---
+
+<div class='group relative'>
+	<a
+		href='https://www.linkedin.com/in/cristian-montoya-lopez'
+		target='_blank'
+		aria-label='Linkedin'
+	>
+		{
+			Icon && (
+				<Icon class='group relative text-[#DDF4FB] w-8 h-8 cursor-pointer transition-transform duration-200 hover:scale-110 hover:drop-shadow-[0_0_4px_#43CFF4]' />
+			)
+		}
+	</a>
+	<span
+		class='absolute -bottom-8 left-[50%] -translate-x-[50%]
+    z-20 origin-top scale-0 px-3 rounded-lg py-2 text-sm font-bold
+    shadow-md transition-all duration-200 ease-in-out
+    group-hover:scale-100 text-[#DDF4FB]'
+		>{text}</span
+	>
+</div>
