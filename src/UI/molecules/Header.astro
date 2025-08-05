@@ -26,22 +26,22 @@ import menu from '../../assets/img/menu.svg';
 		<div class='flex-row gap-x-[30px] text-[32px] hidden sm:flex'>
 			<a
 				href='#home'
-				class='blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
+				class='nav-link blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
 				>Home</a
 			>
 			<a
 				href='#experience'
-				class='blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
+				class='nav-link blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
 				>Experience</a
 			>
 			<a
 				href='#about-me'
-				class='blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
+				class='nav-link blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
 				>About me</a
 			>
 			<a
 				href='#projects'
-				class='blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
+				class='nav-link blue-text rounded-full px-5 hover:bg-[#121427]/50 hover:shadow-[0px_0px_18px_0px_#43CFF4]'
 				>Projects</a
 			>
 		</div>
@@ -73,6 +73,20 @@ import menu from '../../assets/img/menu.svg';
 			lastScrollTop = scrollTop;
 		};
 	}
+	// Función para manejar la selección de enlaces del nav
+	function handleNavSelection() {
+		const navLinks = document.querySelectorAll('.nav-link');
+
+		navLinks.forEach((link) => {
+			link.addEventListener('click', function (this: HTMLElement, e: Event) {
+				navLinks.forEach((l) => {
+					l.classList.remove('bg-[#121427]/50', 'shadow-[0px_0px_18px_0px_#43CFF4]');
+				});
+				this.classList.add('bg-[#121427]/50', 'shadow-[0px_0px_18px_0px_#43CFF4]');
+			});
+		});
+	}
 
 	window.addEventListener('scroll', handleHeaderScroll());
+	document.addEventListener('DOMContentLoaded', handleNavSelection);
 </script>
