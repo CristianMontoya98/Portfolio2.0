@@ -10,7 +10,7 @@ This is my personal front end web portfolio, here you can see:
 - 💅 [Tailwind](https://tailwindcss.com)
 
 ## ✨ Sections
-- Home
+- 🏠 Home
 - 💼 Experience
 - 🧔‍♂️ About me
 - 💻 Projects
