@@ -73,10 +73,10 @@ import menu from '../../assets/img/menu.svg';
 			lastScrollTop = scrollTop;
 		};
 	}
-	// Función para manejar la selección de enlaces del nav
+
 	function handleNavSelection() {
 		const navLinks = document.querySelectorAll('.nav-link');
-
+		const sections = document.querySelectorAll('section[id]');
 		navLinks.forEach((link) => {
 			link.addEventListener('click', function (this: HTMLElement, e: Event) {
 				navLinks.forEach((l) => {
@@ -84,6 +84,26 @@ import menu from '../../assets/img/menu.svg';
 				});
 				this.classList.add('bg-[#121427]/50', 'shadow-[0px_0px_18px_0px_#43CFF4]');
 			});
+		});
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					const id = entry.target.getAttribute('id');
+					const navLink = document.querySelector(`nav a[href="#${id}"]`);
+
+					if (entry.isIntersecting) {
+						navLinks.forEach((link) => link.classList.remove('bg-[#121427]/50', 'shadow-[0px_0px_18px_0px_#43CFF4]'));
+						if (navLink) navLink.classList.add('bg-[#121427]/50', 'shadow-[0px_0px_18px_0px_#43CFF4]');
+					}
+				});
+			},
+			{
+				rootMargin: '0px 0px -70% 0px', // Activa cuando la sección ocupa el 30% superior del viewport
+				threshold: 0.2,
+			}
+		);
+		sections.forEach((section) => {
+			observer.observe(section);
 		});
 	}
 
