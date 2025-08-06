@@ -1,9 +1,5 @@
 ---
 import ProjectCard from '../molecules/Project-card.astro';
-const technologies = [
-	{ icon: 'ReactIcon', text: 'React js' },
-	{ icon: 'CssIcon', text: 'Css' },
-];
 ---
 
 <section
@@ -14,7 +10,10 @@ const technologies = [
 	<ProjectCard
 		bgImage='bg-[url(src/assets/img/laEconomiaShot.webp)]'
 		title='Minifruver la economía'
-		technologies={technologies}
+		technologies={[
+			{ icon: 'ReactIcon', text: 'React js' },
+			{ icon: 'CssIcon', text: 'Css' },
+		]}
 	/>
 	<br />
 	<br />
