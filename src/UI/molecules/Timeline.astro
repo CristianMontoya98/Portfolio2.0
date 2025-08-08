@@ -1,7 +1,14 @@
+---
+import CalendarIcon from '../../assets/icons/CalendarIcon.astro';
+---
+
 <ol class='relative border-s border-[#87E6FF] ml-3 mt-5 max-w-[850px]'>
 	<li class='mb-10 ms-4'>
 		<div class='absolute w-3 h-3 bg-[#DDF4FB] rounded-full mt-1.5 -start-1.5 border border-[#43CFF4] shadow-[0px_0px_20px_3px_#43CFF4]'></div>
-		<time class='mb-1 text-sm font-bold leading-none text-[#456787]'>January 2023 - Curently</time>
+		<div class='flex items-center gap-2 mb-1'>
+			<CalendarIcon class='text-[#3A556E] w-[20px] h-[20px]' />
+			<time class='text-sm font-bold leading-none text-[#3A556E]'>January 2023 - Curently</time>
+		</div>
 		<h3 class='text-lg font-semibold text-[#DDF4FB]'>
 			Software developer at <a
 				href='https://www.ias.com.co/'
@@ -11,14 +18,17 @@
 				>ias Software</a
 			> (Angular).
 		</h3>
-		<p class='mb-4 text-base font-normal text-gray-400'>
+		<p class='mb-4 text-base font-normal text-[#DDF4FB]/90'>
 			Development of user interfaces with angular based on user stories, implementing clean architecture, unit testing with jest, styles with
 			sass and good coding practices.
 		</p>
 	</li>
 	<li class='mb-2 ms-4'>
 		<div class='absolute w-3 h-3 bg-[#DDF4FB] rounded-full mt-1.5 -start-1.5 border border-[#43CFF4] shadow-[0px_0px_20px_3px_#43CFF4]'></div>
-		<time class='mb-1 text-sm font-bold leading-none text-[#456787]'>July 2022 - January 2023</time>
+		<div class='flex items-center gap-2 mb-1'>
+			<CalendarIcon class='text-[#3A556E] w-[20px] h-[20px]' />
+			<time class='text-sm font-bold leading-none text-[#3A556E]'>July 2022 - January 2023</time>
+		</div>
 		<h3 class='text-lg font-semibold text-[#DDF4FB]'>
 			Front-end developer at <a
 				href='https://www.accenture.com'
@@ -28,7 +38,7 @@
 				>Accenture</a
 			> (Angular).
 		</h3>
-		<p class='text-base font-normal text-gray-500 dark:text-gray-400'>
+		<p class='text-base font-normal text-[#DDF4FB]/90'>
 			Development of user interfaces with angular based on user stories, use of micro front-ends, unit testing with karma and styles with sass.
 		</p>
 	</li>
