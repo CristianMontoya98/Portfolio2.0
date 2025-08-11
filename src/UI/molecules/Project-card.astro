@@ -14,7 +14,22 @@ const iconMap = {
 };
 ---
 
-<div class='bg-[#E9F3FB]/10 w-[310px] h-[223px] md:w-[437px] md:h-[350px] rounded-[20px] flex flex-col items-center p-2'></div>
+<div class='bg-[#E9F3FB]/10 w-[310px] h-[223px] md:w-[437px] md:h-[350px] rounded-[20px] flex flex-col items-center p-2'>
+	<div class='flex gap-3'>
+		{
+			technologies.map((tech: any) => {
+				const iconName = tech.icon;
+				const IconComponent = iconMap[iconName as keyof typeof iconMap];
+				return IconComponent ? (
+					<div class='text-[14px] text-[#43CFF4] font-bold mt-4 flex flex-col items-center justify-center gap-2'>
+						<IconComponent class='w-6 h-6' />
+						<p>{tech.text}</p>
+					</div>
+				) : null;
+			})
+		}
+	</div>
+</div>
 <!-- <div class={`bg-cover ${bgImage} w-[310px] h-[223px] md:w-[437px] md:h-[350px] rounded-[20px] flex flex-col items-center p-2`}>
 	<h3 class='text-[#43CFF4] text-[20px] bg-[#121427] px-[35px] py-1 rounded-full border-1 border-[#3A556E]'>{title}</h3>
 	<div class='flex gap-3'>
