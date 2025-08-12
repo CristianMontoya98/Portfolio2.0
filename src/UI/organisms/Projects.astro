@@ -1,5 +1,6 @@
 ---
 import ProjectCard from '../molecules/Project-card.astro';
+import laEconomiaImg from '../../assets/img/laEconomiaShot.webp';
 ---
 
 <section
@@ -8,7 +9,8 @@ import ProjectCard from '../molecules/Project-card.astro';
 >
 	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>Projects</h2>
 	<ProjectCard
-		bgImage='bg-[url(src/assets/img/laEconomiaShot.webp)]'
+		bgImage={laEconomiaImg}
+		altImg='Imagen de app la economia'
 		title='Minifruver la economía'
 		technologies={[
 			{ icon: 'ReactIcon', text: 'React js' },
