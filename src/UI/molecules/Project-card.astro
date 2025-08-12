@@ -5,7 +5,7 @@ import HtmlIcon from '../../assets/icons/HtmlIcon.astro';
 import JsIcon from '../../assets/icons/JsIcon.astro';
 import ReactIcon from '../../assets/icons/ReactIcon.astro';
 
-const { bgImage, altImg, title, technologies = [] } = Astro.props;
+const { bgImage, altImg, title, description, technologies = [] } = Astro.props;
 
 const iconMap = {
 	ReactIcon,
@@ -26,11 +26,13 @@ const iconMap = {
 			loading='eager'
 			draggable='false'
 		/>
-		<div class='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+		<div class='flex absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+			<p class='text-[#DDF4FB] font-semibold'>{description}</p>
+		</div>
 	</div>
 
-	<div class='p-6 space-y-4'>
-		<h3 class='text-xl font-semibold text-white tracking-tight group-hover:text-[#43CFF4] transition-colors duration-300'>
+	<div class='p-6 space-y-1'>
+		<h3 class='text-xl font-semibold text-[#DDF4FB]tracking-tight group-hover:text-[#43CFF4] transition-colors duration-300'>
 			{title}
 		</h3>
 
