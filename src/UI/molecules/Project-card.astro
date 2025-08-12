@@ -1,10 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import CssIcon from '../../assets/icons/CssIcon.astro';
 import HtmlIcon from '../../assets/icons/HtmlIcon.astro';
 import JsIcon from '../../assets/icons/JsIcon.astro';
 import ReactIcon from '../../assets/icons/ReactIcon.astro';
 
-const { bgImage, title, technologies = [] } = Astro.props;
+const { bgImage, altImg, title, technologies = [] } = Astro.props;
 
 const iconMap = {
 	ReactIcon,
@@ -14,8 +15,16 @@ const iconMap = {
 };
 ---
 
-<div class='bg-[#E9F3FB]/10 w-[310px] h-[223px] md:w-[437px] md:h-[350px] rounded-[20px] flex flex-col items-center p-2'>
+<div class='bg-[#E9F3FB]/10 w-[310px] md:w-[437px] rounded-[20px] flex flex-col items-center overflow-hidden'>
+	<Image
+		src={bgImage}
+		alt={altImg}
+		class='w-full h-[315px]'
+		loading='eager'
+		draggable='false'
+	/>
 	<h3 class='text-[#43CFF4] text-[20px] bg-[#121427] px-[35px] py-1 rounded-full border-1 border-[#3A556E]'>{title}</h3>
+
 	<div class='flex gap-3'>
 		{
 			technologies.map((tech: any) => {
