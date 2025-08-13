@@ -2,6 +2,7 @@
 import ProjectCard from '../molecules/Project-card.astro';
 import laEconomiaImg from '../../assets/img/laEconomiaShot.webp';
 import rickAndMortyApi from '../../assets/img/randm.webp';
+import cowboyBbop from '../../assets/img/cowboyshot.webp';
 ---
 
 <section
@@ -31,12 +32,14 @@ import rickAndMortyApi from '../../assets/img/randm.webp';
 			]}
 		/>
 		<ProjectCard
-			bgImage={laEconomiaImg}
-			altImg='Imagen de app la economia'
-			title='Minifruver la economía'
+			bgImage={cowboyBbop}
+			altImg='Imagen de web tributo a Cowboy Bebop'
+			title='Cowboy Bebop web tribute'
+			description='Web page tribute to Cowboy Bebop, explaining the story and introducing the characters.'
 			technologies={[
-				{ icon: 'ReactIcon', text: 'React js' },
+				{ icon: 'HtmlIcon', text: 'HTML' },
 				{ icon: 'CssIcon', text: 'Css' },
+				{ icon: 'JsIcon', text: 'Javascript' },
 			]}
 		/>
 	</div>
