@@ -22,7 +22,7 @@ const iconMap = {
 		<Image
 			src={bgImage}
 			alt={altImg}
-			class='w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110'
+			class='w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110'
 			loading='eager'
 			draggable='false'
 		/>
@@ -37,7 +37,7 @@ const iconMap = {
 		<h3 class='text-xl font-semibold text-[#DDF4FB] group-hover:text-[#43CFF4] transition-colors duration-300'>
 			{title}
 		</h3>
-
+		<!-- <p class='text-[#DDF4FB] font-semibold'>{description}</p> -->
 		<div class='flex flex-wrap gap-3'>
 			{
 				technologies.map((tech: any) => {
