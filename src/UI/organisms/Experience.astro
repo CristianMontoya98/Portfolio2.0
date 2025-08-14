@@ -8,13 +8,14 @@ import Timeline from '../molecules/Timeline.astro';
 	id='experience'
 	class='w-100vw flex flex-col items-center justify-center mt-[38px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold mb-[20px]'>Experience</h2>
-
-	<Button
-		text='Download cv'
-		icon={DownloadIcon}
-		iconClass='font-bold w-[18px] h-[18px]'
-		isNeon={true}
-	/>
-	<Timeline />
+	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>Experience</h2>
+	<div class='flex flex-col items-center mt-5'>
+		<Button
+			text='Download cv'
+			icon={DownloadIcon}
+			iconClass='font-bold w-[18px] h-[18px]'
+			isNeon={true}
+		/>
+		<Timeline />
+	</div>
 </section>
