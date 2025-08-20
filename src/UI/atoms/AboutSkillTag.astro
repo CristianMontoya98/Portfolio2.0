@@ -1,0 +1,9 @@
+---
+const { text, icon: Icon, iconClass, containerClass } = Astro.props;
+let tagStyles = `flex items-center justify-center gap-3 rounded-lg border ${containerClass}`;
+---
+
+<div class={tagStyles}>
+	{Icon && <Icon class={iconClass} />}
+	<p>{text}</p>
+</div>
