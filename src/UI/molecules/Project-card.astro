@@ -7,7 +7,7 @@ import ReactIcon from '../../assets/icons/ReactIcon.astro';
 import GithubIcon from '../../assets/icons/GithubIcon.astro';
 import Button from '../atoms/Button.astro';
 
-const { bgImage, altImg, title, description, technologies = [] } = Astro.props;
+const { bgImage, altImg, title, description, gitHubUrl, webSiteUrl, technologies = [] } = Astro.props;
 
 const iconMap = {
 	ReactIcon,
@@ -57,14 +57,16 @@ const iconMap = {
 
 		<div class='flex gap-2'>
 			<a
-				href='https://github.com/CristianMontoya98/LaEconomiaApp'
+				target='_blank'
+				href={gitHubUrl}
 				class='mt-5 w-[50%] h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
 			>
 				<GithubIcon class='font-bold w-[30px] h-[30px]' />
 				<span class='text-[18px]'>Github</span>
 			</a>
 			<a
-				href='https://github.com/CristianMontoya98/LaEconomiaApp'
+				target='_blank'
+				href={webSiteUrl}
 				class='mt-5 w-[50%] h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
 			>
 				<svg
