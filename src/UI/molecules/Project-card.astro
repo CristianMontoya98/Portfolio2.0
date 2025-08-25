@@ -4,6 +4,7 @@ import CssIcon from '../../assets/icons/CssIcon.astro';
 import HtmlIcon from '../../assets/icons/HtmlIcon.astro';
 import JsIcon from '../../assets/icons/JsIcon.astro';
 import ReactIcon from '../../assets/icons/ReactIcon.astro';
+import GithubIcon from '../../assets/icons/GithubIcon.astro';
 
 const { bgImage, altImg, title, description, technologies = [] } = Astro.props;
 
@@ -33,7 +34,7 @@ const iconMap = {
 		</div>
 	</div>
 
-	<div class='p-6 space-y-1'>
+	<div class='p-6'>
 		<h3 class='text-xl font-semibold text-[#DDF4FB] group-hover:text-[#43CFF4] transition-colors duration-300'>
 			{title}
 		</h3>
@@ -52,5 +53,12 @@ const iconMap = {
 				})
 			}
 		</div>
+		<a
+			href='https://github.com/CristianMontoya98/LaEconomiaApp'
+			class='bg-[#121427] p-2 flex items-center justify-center gap-5 mt-4 rounded-full w-[50%]'
+		>
+			<GithubIcon />
+			Github
+		</a>
 	</div>
 </div>
