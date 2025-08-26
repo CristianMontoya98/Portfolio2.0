@@ -2,6 +2,7 @@
 import '@fontsource-variable/onest';
 import '../../styles/global.css';
 import Header from '../molecules/Header.astro';
+import ScrollToTop from '../atoms/Scroll-to-top.astro';
 interface Props {
 	title?: string;
 }
@@ -30,6 +31,7 @@ const { title = 'Cristian Montoya' } = Astro.props;
 	</head>
 	<body>
 		<Header />
+		<ScrollToTop />
 		<slot />
 	</body>
 </html>
