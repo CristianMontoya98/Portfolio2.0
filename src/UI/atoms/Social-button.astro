@@ -1,10 +1,10 @@
 ---
-const { text, icon: Icon } = Astro.props;
+const { text, icon: Icon, link } = Astro.props;
 ---
 
 <div class='group relative'>
 	<a
-		href='https://www.linkedin.com/in/cristian-montoya-lopez'
+		href={link}
 		target='_blank'
 		aria-label='Linkedin'
 	>
