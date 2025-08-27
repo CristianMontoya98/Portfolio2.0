@@ -258,8 +258,7 @@ body {
   width: 24px;
   border-radius: 14px;
   transform: none;
-  border: 2px solid white;
-  top: 170px;
+  border: 2px solid #DDF4FB;
 }
 
 .wheel {
