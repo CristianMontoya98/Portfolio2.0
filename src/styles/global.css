@@ -346,3 +346,26 @@ body {
   100% { opacity: 1; }
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07080f;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #43CFF4;
+  border-radius: 6px;
+  border: 2px solid #07080f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7EDAF2;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #43CFF4 #07080f;
+}
