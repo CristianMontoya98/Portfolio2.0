@@ -3,19 +3,24 @@ import ProjectCard from '../molecules/Project-card.astro';
 import laEconomiaImg from '../../assets/img/laEconomiaShot.webp';
 import rickAndMortyApi from '../../assets/img/randm.webp';
 import cowboyBbop from '../../assets/img/cowboyshot.webp';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <section
 	id='projects'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>Projects</h2>
+	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('projects.title')}</h2>
 	<div class='flex flex-col justify-center lg:flex-row gap-2 p-2 mt-8'>
 		<ProjectCard
 			bgImage={laEconomiaImg}
 			altImg='Imagen de app la economia'
-			title='Minifruver la economía'
-			description='E commerce to buy fruits and vegetables from the store minifruver la economia, connect with the whatsapp api to send a message with the order.'
+			title={translateLabels('project.minifruver.title')}
+			description={translateLabels('project.minifruver.desc')}
 			gitHubUrl='https://github.com/CristianMontoya98/LaEconomiaApp'
 			webSiteUrl='https://minifruverlaeconomia.netlify.app/'
 			technologies={[
@@ -26,8 +31,8 @@ import cowboyBbop from '../../assets/img/cowboyshot.webp';
 		<ProjectCard
 			bgImage={rickAndMortyApi}
 			altImg='Imagen de app api Rick y Morty'
-			title='Api Rick and Morty'
-			description='App to list the characters of Rick and Morty consuming the rick and morty api.'
+			title={translateLabels('project.rickandmorty.title')}
+			description={translateLabels('project.rickandmorty.desc')}
 			gitHubUrl='https://github.com/CristianMontoya98/ApiRickMortyV2'
 			webSiteUrl='https://visualizerrickmorty.netlify.app/'
 			technologies={[
@@ -38,8 +43,8 @@ import cowboyBbop from '../../assets/img/cowboyshot.webp';
 		<ProjectCard
 			bgImage={cowboyBbop}
 			altImg='Imagen de web tributo a Cowboy Bebop'
-			title='Cowboy Bebop web tribute'
-			description='Web page tribute to Cowboy Bebop, explaining the story and introducing the characters.'
+			title={translateLabels('project.cowboy.title')}
+			description={translateLabels('project.cowboy.desc')}
 			gitHubUrl='https://github.com/CristianMontoya98/CristianMontoya98.github.io'
 			webSiteUrl='https://cristianmontoya98.github.io/'
 			technologies={[

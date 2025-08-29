@@ -2,13 +2,18 @@
 import { Image } from 'astro:assets';
 import aboutMe from '../../assets/img/about-me-illustration.svg';
 import AboutMeInfo from '../molecules/About-me-info.astro';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <section
 	id='about-me'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>About me</h2>
+	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('about.title')}</h2>
 	<div class='mt-8 flex flex-col-reverse sm:flex-row items-center justify-center gap-[50px] md:gap-[100px]'>
 		<Image
 			src={aboutMe}

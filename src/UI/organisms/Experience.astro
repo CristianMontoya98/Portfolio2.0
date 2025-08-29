@@ -2,16 +2,21 @@
 import DownloadIcon from '../../assets/icons/DownloadIcon.astro';
 import Button from '../atoms/Button.astro';
 import Timeline from '../molecules/Timeline.astro';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <section
 	id='experience'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>Experience</h2>
+	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('experience.title')}</h2>
 	<div class='flex flex-col items-center mt-8 gap-[70px]'>
 		<Button
-			text='Download cv'
+			text={translateLabels('experience.download')}
 			icon={DownloadIcon}
 			iconClass='font-bold w-[18px] h-[18px]'
 			isNeon={true}
