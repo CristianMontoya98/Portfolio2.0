@@ -2,6 +2,10 @@
 import { Image } from 'astro:assets';
 import logo from '../../assets/img/logo.svg';
 import menu from '../../assets/img/menu.svg';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <header
@@ -27,22 +31,22 @@ import menu from '../../assets/img/menu.svg';
 			<a
 				href='#home'
 				class='duration-300 ease-in-out nav-link blue-text rounded-full px-8 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
-				>Home</a
+				>{translateLabels('nav.home')}</a
 			>
 			<a
 				href='#experience'
 				class='duration-300 ease-in-out nav-link blue-text rounded-full px-8 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
-				>Experience</a
+				>{translateLabels('nav.experience')}</a
 			>
 			<a
 				href='#about-me'
 				class='duration-300 ease-in-out nav-link blue-text rounded-full px-8 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
-				>About me</a
+				>{translateLabels('nav.about')}</a
 			>
 			<a
 				href='#projects'
 				class='duration-300 ease-in-out nav-link blue-text rounded-full px-8 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
-				>Projects</a
+				>{translateLabels('nav.projects')}</a
 			>
 		</div>
 	</nav>
