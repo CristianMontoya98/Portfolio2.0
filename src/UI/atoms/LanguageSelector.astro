@@ -2,17 +2,17 @@
 import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
 ---
 
-<div class='flex items-center gap-2 bg-[#43CFF4]/10 backdrop-blur-sm border border-[#43CFF4]/20 text-[#DDF4FB] rounded-lg px-4 py-2'>
-	<LanguageIcon class='w-[24px] h-[28px]' />
+<div class='flex items-center gap-2 bg-[#43CFF4]/10 backdrop-blur-sm border border-[#43CFF4]/20 text-[#DDF4FB] rounded-lg px-4 py-[5px]'>
+	<LanguageIcon class='w-[24px] h-[24px]' />
 	<button
 		id='es-button'
-		class='font-bold p-2 ms-3 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
+		class='font-bold text-sm p-2 ms-3 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md hover:shadow-[4px_4px_18px_0px_#121427]'
 	>
 		ES
 	</button>
 	<button
 		id='en-button'
-		class='font-bold p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
+		class='font-bold text-sm p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md hover:shadow-[4px_4px_18px_0px_#121427]'
 	>
 		EN
 	</button>
@@ -27,13 +27,13 @@ import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
 			const isSpanish = currentPath.startsWith('/es') || (!currentPath.startsWith('/en') && !currentPath.startsWith('/es'));
 			const isEnglish = currentPath.startsWith('/en');
 
-			spanishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
-			englishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
+			spanishToggle?.classList.remove('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
+			englishToggle?.classList.remove('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
 
 			if (isSpanish) {
-				spanishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
+				spanishToggle?.classList.add('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
 			} else if (isEnglish) {
-				englishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
+				englishToggle?.classList.add('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
 			}
 		}
 		updateActiveStyles();
