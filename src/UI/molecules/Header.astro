@@ -4,6 +4,7 @@ import logo from '../../assets/img/logo.svg';
 import menu from '../../assets/img/menu.svg';
 import { useTranslations } from '../../i18n/utils';
 import { languageList } from '../../i18n/ui';
+import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
@@ -12,7 +13,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 	id='header'
 	class='flex justify-between items-center w-full pt-2 sm:p-[10px] sm:px-[40px] fixed top-0 z-20 transition-transform duration-300'
 >
-	<div class='flex items-center gap-2'>
+	<div class='flex items-center gap-7'>
 		<Image
 			src={logo}
 			alt='logo de Cristian Montoya'
@@ -20,13 +21,21 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 			loading='eager'
 			draggable='false'
 		/>
-		<button
-			id='language-toggle'
-			class='duration-300 ease-in-out blue-text rounded-full px-6 py-2 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4] border border-[#43CFF4]'
-			title={translateLabels('nav.language.tooltip')}
-		>
-			{translateLabels('nav.language')}
-		</button>
+		<div class='flex items-center gap-2 bg-[#43CFF4]/10 backdrop-blur-sm border border-[#43CFF4]/20 text-[#DDF4FB] rounded-lg px-4 py-2'>
+			<LanguageIcon class='w-[24px] h-[28px]' />
+			<button
+				id='es-button'
+				class='font-bold p-2 ms-3 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
+			>
+				ES
+			</button>
+			<button
+				id='en-button'
+				class='font-bold p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
+			>
+				EN
+			</button>
+		</div>
 	</div>
 	<nav id='nav'>
 		<Image
@@ -122,23 +131,37 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 	}
 
 	function handleLanguageToggle() {
-		const languageToggle = document.getElementById('language-toggle');
+		const spanishToggle = document.getElementById('es-button');
+		const englishToggle = document.getElementById('en-button');
 
-		languageToggle?.addEventListener('click', () => {
+		function updateActiveStyles() {
 			const currentPath = window.location.pathname;
-			const currentLang = currentPath.startsWith('/en') ? 'en' : 'es';
-			const newLang = currentLang === 'es' ? 'en' : 'es';
+			const isSpanish = currentPath.startsWith('/es') || (!currentPath.startsWith('/en') && !currentPath.startsWith('/es'));
+			const isEnglish = currentPath.startsWith('/en');
 
-			// Construir la nueva URL
-			let newPath = '';
-			if (newLang === 'en') {
-				newPath = '/en' + (currentPath.startsWith('/es') ? currentPath.substring(3) : currentPath);
-			} else {
-				newPath = currentPath.startsWith('/en') ? currentPath.substring(3) : currentPath;
+			spanishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
+			englishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
+
+			if (isSpanish) {
+				spanishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
+			} else if (isEnglish) {
+				englishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
 			}
-
-			// Redirigir a la nueva URL
-			window.location.href = newPath;
+		}
+		updateActiveStyles();
+		spanishToggle?.addEventListener('click', () => {
+			const currentPath = window.location.pathname;
+			let newPath = '/es' + currentPath.substring(3);
+			if (currentPath.startsWith('/en')) {
+				window.location.href = newPath;
+			}
+		});
+		englishToggle?.addEventListener('click', () => {
+			const currentPath = window.location.pathname;
+			let newPath = '/en' + currentPath.substring(3);
+			if (currentPath.startsWith('/es')) {
+				window.location.href = newPath;
+			}
 		});
 	}
 
