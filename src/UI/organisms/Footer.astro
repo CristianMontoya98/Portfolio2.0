@@ -2,6 +2,11 @@
 import { Image } from 'astro:assets';
 import logoFooter from '../../assets/img/logoFooter.svg';
 import AstroIcon2 from '../../assets/icons/AstroIcon2.astro';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 
 <footer class='mt-[60px] md:mt-[120px] w-full h-[150px]'>
@@ -19,7 +24,7 @@ import AstroIcon2 from '../../assets/icons/AstroIcon2.astro';
 	<div class='flex flex-col items-center justify-center w-full h-full text-[20px]'>
 		<h3 class='text-[#DDF4FB] font-semibold'>Cristian Montoya 2025.</h3>
 		<div class='flex items-center justify-center gap-2'>
-			<h3 class='text-[#3A556E] italic'>Build with Astro</h3>
+			<h3 class='text-[#3A556E] italic'>{translateLabels('footer.buildwith')}</h3>
 			<AstroIcon2 class='w-[35px] h-[35px]' />
 		</div>
 	</div>
