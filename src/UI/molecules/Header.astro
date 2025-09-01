@@ -5,6 +5,8 @@ import menu from '../../assets/img/menu.svg';
 import { useTranslations } from '../../i18n/utils';
 import { languageList } from '../../i18n/ui';
 import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
+import LanguageSelector from '../atoms/LanguageSelector.astro';
+
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
@@ -21,21 +23,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 			loading='eager'
 			draggable='false'
 		/>
-		<div class='flex items-center gap-2 bg-[#43CFF4]/10 backdrop-blur-sm border border-[#43CFF4]/20 text-[#DDF4FB] rounded-lg px-4 py-2'>
-			<LanguageIcon class='w-[24px] h-[28px]' />
-			<button
-				id='es-button'
-				class='font-bold p-2 ms-3 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
-			>
-				ES
-			</button>
-			<button
-				id='en-button'
-				class='font-bold p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md'
-			>
-				EN
-			</button>
-		</div>
+		<LanguageSelector />
 	</div>
 	<nav id='nav'>
 		<Image
@@ -130,44 +118,8 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 		});
 	}
 
-	function handleLanguageToggle() {
-		const spanishToggle = document.getElementById('es-button');
-		const englishToggle = document.getElementById('en-button');
-
-		function updateActiveStyles() {
-			const currentPath = window.location.pathname;
-			const isSpanish = currentPath.startsWith('/es') || (!currentPath.startsWith('/en') && !currentPath.startsWith('/es'));
-			const isEnglish = currentPath.startsWith('/en');
-
-			spanishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
-			englishToggle?.classList.remove('bg-[#43CFF4]/20', 'rounded-md');
-
-			if (isSpanish) {
-				spanishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
-			} else if (isEnglish) {
-				englishToggle?.classList.add('bg-[#43CFF4]/20', 'rounded-md');
-			}
-		}
-		updateActiveStyles();
-		spanishToggle?.addEventListener('click', () => {
-			const currentPath = window.location.pathname;
-			let newPath = '/es' + currentPath.substring(3);
-			if (currentPath.startsWith('/en')) {
-				window.location.href = newPath;
-			}
-		});
-		englishToggle?.addEventListener('click', () => {
-			const currentPath = window.location.pathname;
-			let newPath = '/en' + currentPath.substring(3);
-			if (currentPath.startsWith('/es')) {
-				window.location.href = newPath;
-			}
-		});
-	}
-
 	window.addEventListener('scroll', handleHeaderScroll());
 	document.addEventListener('DOMContentLoaded', () => {
 		handleNavSelection();
-		handleLanguageToggle();
 	});
 </script>
