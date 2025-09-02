@@ -23,7 +23,7 @@ export const labels = {
         'about.title': 'Sobre mí',
         'about.Hi': 'Hola, soy Cristian',
         'about.frontdev': 'Desarrollador web Front-end',
-        'about.info': 'Cuento con más de 3 años de experiencia trabajando en desarrollo web front-end con Angular y Next js, ',
+        'about.info': 'Cuento con más de 3 años de experiencia desarrollando sitios web modernos e interactivos con Angular y Next.js, aplicando Tailwind y Sass para lograr interfaces atractivas y responsivas. Me enfoco en aplicar buenas prácticas que faciliten la escalabilidad de los proyectos. ',
         'projects.title': 'Proyectos',
         'project.minifruver.title': 'Minifruver la economía e-commerce',
         'project.minifruver.desc': 'E-commerce para comprar frutas y verduras de la tienda minifruver la economía, conectado con la api de whatsapp para enviar un mensaje con el pedido.',
