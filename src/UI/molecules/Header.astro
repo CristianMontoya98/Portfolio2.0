@@ -29,10 +29,45 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 		<Image
 			src={menu}
 			alt='icono menu'
-			class='w-[48px] h-[48px] sm:hidden mr-[10px]'
+			class='w-[48px] h-[48px] sm:hidden mr-[10px] cursor-pointer'
 			loading='eager'
 			draggable='false'
+			id='menu-toggle'
 		/>
+
+		<div
+			id='mobile-menu'
+			class='fixed top-0 left-0 w-full h-screen bg-[#121427]/95 backdrop-blur-md z-30 transform translate-x-full transition-transform duration-300 ease-in-out sm:hidden'
+		>
+			<div class='flex flex-col items-center justify-center h-full gap-8'>
+				<button
+					id='close-menu'
+					class='absolute top-6 right-6 text-[#43CFF4] text-2xl font-bold hover:text-white transition-colors duration-200'
+				>
+					✕
+				</button>
+				<a
+					href='#home'
+					class='mobile-nav-link blue-text text-2xl font-bold duration-300 ease-in-out rounded-full px-8 py-4 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
+					>{translateLabels('nav.home')}</a
+				>
+				<a
+					href='#experience'
+					class='mobile-nav-link blue-text text-2xl font-bold duration-300 ease-in-out rounded-full px-8 py-4 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
+					>{translateLabels('nav.experience')}</a
+				>
+				<a
+					href='#about-me'
+					class='mobile-nav-link blue-text text-2xl font-bold duration-300 ease-in-out rounded-full px-8 py-4 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
+					>{translateLabels('nav.about')}</a
+				>
+				<a
+					href='#projects'
+					class='mobile-nav-link blue-text text-2xl font-bold duration-300 ease-in-out rounded-full px-8 py-4 hover:bg-[#43CFF4]/20 hover:shadow-[0px_0px_10px_0px_#43CFF4]'
+					>{translateLabels('nav.projects')}</a
+				>
+			</div>
+		</div>
 
 		<div class='flex-row lg:gap-x-[30px] gap-x-[0px] lg:text-[20px] text-[20px] hidden sm:flex'>
 			<a
@@ -87,30 +122,52 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 
 	function handleNavSelection() {
 		const navLinks = document.querySelectorAll('.nav-link');
+		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 		const sections = document.querySelectorAll('section[id]');
+
+		const removeActiveStyles = () => {
+			navLinks.forEach((link) => {
+				link.classList.remove('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
+			});
+			mobileNavLinks.forEach((link) => {
+				link.classList.remove('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
+			});
+		};
+
+		const addActiveStyles = (targetLink: Element) => {
+			removeActiveStyles();
+			targetLink.classList.add('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
+		};
+
 		navLinks.forEach((link) => {
 			link.addEventListener('click', function (this: HTMLElement, e: Event) {
-				navLinks.forEach((l) => {
-					l.classList.remove('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
-				});
-				this.classList.add('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
+				addActiveStyles(this);
 			});
 		});
+
+		mobileNavLinks.forEach((link) => {
+			link.addEventListener('click', function (this: HTMLElement, e: Event) {
+				addActiveStyles(this);
+			});
+		});
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					const id = entry.target.getAttribute('id');
-					const navLink = document.querySelector(`nav a[href="#${id}"]`);
+					const navLink = document.querySelector(`.nav-link[href="#${id}"]`);
+					const mobileNavLink = document.querySelector(`.mobile-nav-link[href="#${id}"]`);
 
 					if (entry.isIntersecting) {
-						navLinks.forEach((link) => link.classList.remove('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]'));
+						removeActiveStyles();
 						if (navLink) navLink.classList.add('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
+						if (mobileNavLink) mobileNavLink.classList.add('bg-[#43CFF4]/20', 'shadow-[0px_0px_10px_0px_#43CFF4]');
 					}
 				});
 			},
 			{
-				rootMargin: '0px 0px -70% 0px',
-				threshold: 0.2,
+				rootMargin: '0px 0px -60% 0px',
+				threshold: [0.1, 0.5, 0.9],
 			}
 		);
 		sections.forEach((section) => {
@@ -118,8 +175,40 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 		});
 	}
 
+	function handleMobileMenu() {
+		const menuToggle = document.getElementById('menu-toggle');
+		const mobileMenu = document.getElementById('mobile-menu');
+		const closeMenu = document.getElementById('close-menu');
+		const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+		menuToggle?.addEventListener('click', () => {
+			mobileMenu?.classList.remove('translate-x-full');
+			document.body.style.overflow = 'hidden';
+		});
+
+		closeMenu?.addEventListener('click', () => {
+			mobileMenu?.classList.add('translate-x-full');
+			document.body.style.overflow = '';
+		});
+
+		mobileNavLinks.forEach((link) => {
+			link.addEventListener('click', () => {
+				mobileMenu?.classList.add('translate-x-full');
+				document.body.style.overflow = '';
+			});
+		});
+
+		mobileMenu?.addEventListener('click', (e) => {
+			if (e.target === mobileMenu) {
+				mobileMenu.classList.add('translate-x-full');
+				document.body.style.overflow = '';
+			}
+		});
+	}
+
 	window.addEventListener('scroll', handleHeaderScroll());
 	document.addEventListener('DOMContentLoaded', () => {
 		handleNavSelection();
+		handleMobileMenu();
 	});
 </script>
