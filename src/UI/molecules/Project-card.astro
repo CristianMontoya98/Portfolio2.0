@@ -6,7 +6,7 @@ import JsIcon from '../../assets/icons/JsIcon.astro';
 import ReactIcon from '../../assets/icons/ReactIcon.astro';
 import GithubIcon from '../../assets/icons/GithubIcon.astro';
 
-const { bgImage, altImg, title, description, gitHubUrl, webSiteUrl, technologies = [] } = Astro.props;
+const { bgImage, altImg, title, description, gitHubUrl, webSiteUrl, technologies, delay = [] } = Astro.props;
 
 const iconMap = {
 	ReactIcon,
@@ -18,6 +18,8 @@ const iconMap = {
 
 <div
 	class='flex flex-col justify-between w-[100%] sm:w[35%] group relative bg-[#43CFF4]/5 border-2 border-[#43CFF4]/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#43CFF4]/10 hover:shadow-2xl hover:shadow-[#43CFF4]/10 hover:border-[#43CFF4]/20 hover:-translate-y-2 border-anim'
+	data-aos='flip-right'
+	data-aos-delay={delay}
 >
 	<div class='relative overflow-hidden'>
 		<Image
