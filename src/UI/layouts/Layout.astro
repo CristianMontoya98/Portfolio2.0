@@ -3,8 +3,7 @@ import '@fontsource-variable/onest';
 import '../../styles/global.css';
 import Header from '../molecules/Header.astro';
 import ScrollToTop from '../atoms/Scroll-to-top.astro';
-import { useTranslations } from '../../i18n/utils';
-import { languageList } from '../../i18n/ui';
+import 'aos/dist/aos.css';
 interface Props {
 	title?: string;
 }
@@ -36,5 +35,13 @@ const currentLang = Astro.currentLocale || 'es';
 		<Header />
 		<ScrollToTop />
 		<slot />
+		<script>
+			import AOS from 'aos';
+			AOS.init({
+				duration: 800,
+				easing: 'ease-in-out',
+				once: false,
+			});
+		</script>
 	</body>
 </html>
