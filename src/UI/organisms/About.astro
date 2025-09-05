@@ -13,15 +13,28 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 	id='about-me'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('about.title')}</h2>
-	<div class='mt-8 flex flex-col-reverse sm:flex-row items-center justify-center gap-[50px] md:gap-[100px]'>
-		<Image
-			src={aboutMe}
-			alt='about me'
-			class='w-[200px] h-[200px] md:w-[300px] md:h-[300px]'
-			loading='lazy'
-			draggable='false'
-		/>
+	<h2
+		class='blue-text sm:text-[45px] text-[36px] font-bold'
+		data-aos='fade-down'
+		data-aos-delay='50'
+	>
+		{translateLabels('about.title')}
+	</h2>
+	<div
+		class='mt-8 flex flex-col-reverse sm:flex-row items-center justify-center gap-[50px] md:gap-[100px]'
+		data-aos='fade-right'
+		data-aos-delay='500'
+	>
+		<div>
+			<Image
+				src={aboutMe}
+				alt='about me'
+				class='w-[200px] h-[200px] md:w-[300px] md:h-[300px]'
+				loading='lazy'
+				draggable='false'
+			/>
+		</div>
+
 		<AboutMeInfo />
 	</div>
 </section>
