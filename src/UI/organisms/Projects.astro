@@ -14,7 +14,13 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 	id='projects'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('projects.title')}</h2>
+	<h2
+		class='blue-text sm:text-[45px] text-[36px] font-bold'
+		data-aos='fade-down'
+		data-aos-delay='50'
+	>
+		{translateLabels('projects.title')}
+	</h2>
 	<div class='flex flex-col justify-center lg:flex-row gap-2 p-2 mt-8'>
 		<ProjectCard
 			bgImage={laEconomiaImg}
@@ -27,6 +33,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 				{ icon: 'ReactIcon', text: 'React js' },
 				{ icon: 'CssIcon', text: 'Css' },
 			]}
+			delay='300'
 		/>
 		<ProjectCard
 			bgImage={rickAndMortyApi}
@@ -39,6 +46,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 				{ icon: 'ReactIcon', text: 'React js' },
 				{ icon: 'CssIcon', text: 'Css' },
 			]}
+			delay='500'
 		/>
 		<ProjectCard
 			bgImage={cowboyBbop}
@@ -52,6 +60,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 				{ icon: 'CssIcon', text: 'Css' },
 				{ icon: 'JsIcon', text: 'Javascript' },
 			]}
+			delay='800'
 		/>
 	</div>
 </section>
