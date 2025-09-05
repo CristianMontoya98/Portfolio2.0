@@ -14,7 +14,13 @@ const downloadLink = currentLang === 'en' ? '/src/assets/CV/CristianMontoyaCVE.p
 	id='experience'
 	class='w-100vw flex flex-col items-center justify-center pt-[60px] md:pt-[120px]'
 >
-	<h2 class='blue-text sm:text-[45px] text-[36px] font-bold'>{translateLabels('experience.title')}</h2>
+	<h2
+		class='blue-text sm:text-[45px] text-[36px] font-bold'
+		data-aos='fade-down'
+		data-aos-delay='50'
+	>
+		{translateLabels('experience.title')}
+	</h2>
 	<div class='flex flex-col items-center mt-8 gap-[70px]'>
 		<Button
 			text={translateLabels('experience.download')}
