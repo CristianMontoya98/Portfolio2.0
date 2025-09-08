@@ -7,7 +7,7 @@ import { languageList } from '../../i18n/ui';
 
 const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslations(currentLang as keyof typeof languageList);
-const downloadLink = currentLang === 'en' ? '/src/assets/CV/CristianMontoyaCVE.pdf' : '/src/assets/CV/CristianMontoyaCVS.pdf';
+const downloadLink = currentLang === 'en' ? '/CristianMontoyaCVE.pdf' : '/CristianMontoyaCVS.pdf';
 ---
 
 <section
