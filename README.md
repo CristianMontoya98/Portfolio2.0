@@ -16,4 +16,4 @@ This is my personal front end web portfolio, here you can see:
 - 💻 Projects
 
 ## 🪄 Features
-
+- English and Spanish button translations
