@@ -2,6 +2,7 @@
 This is my personal front end web portfolio, here you can see:
 - 📋 All my front end projects.
 - 💼 Experience linetime.
+- 👨 About me information.
 - 📞 Contact information.
 
 ## 🛠️ Tech stack
