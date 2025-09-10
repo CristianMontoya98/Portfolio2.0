@@ -15,4 +15,5 @@ This is my personal front end web portfolio, here you can see:
 - 🧔‍♂️ About me
 - 💻 Projects
 
+## 🪄 Features
 
