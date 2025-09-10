@@ -19,4 +19,4 @@ This is my personal front end web portfolio, here you can see:
 ## 🪄 Features
 - English and Spanish button translations
 - Scroll to top button
-- 
+- Download CV button
