@@ -20,3 +20,4 @@ This is my personal front end web portfolio, here you can see:
 - English and Spanish button translations
 - Scroll to top button
 - Download CV button
+- Skills scroll carroussel
