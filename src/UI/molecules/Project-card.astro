@@ -17,76 +17,79 @@ const iconMap = {
 ---
 
 <div
-	class='flex flex-col justify-between w-[100%] sm:w[35%] group relative bg-[#43CFF4]/5 border-2 border-[#43CFF4]/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#43CFF4]/10 hover:shadow-2xl hover:shadow-[#43CFF4]/10 hover:border-[#43CFF4]/20 hover:-translate-y-2 border-anim'
 	data-aos='flip-right'
 	data-aos-delay={delay}
 >
-	<div class='relative overflow-hidden'>
-		<Image
-			src={bgImage}
-			alt={altImg}
-			class='w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110'
-			loading='lazy'
-			draggable='false'
-		/>
-		<div
-			class='hidden md:flex justify-center items-center p-5 absolute inset-0 bg-[#0B0C17]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500'
-		>
-			<p class='text-[#DDF4FB] font-semibold text-[18px]'>{description}</p>
-		</div>
-	</div>
-
-	<div class='p-6'>
-		<h3 class='text-xl font-semibold text-[#DDF4FB] group-hover:text-[#43CFF4] transition-colors duration-300'>
-			{title}
-		</h3>
-		<p class='text-[#DDF4FB] text-sm md:hidden'>{description}</p>
-		<div class='flex flex-wrap gap-3 mt-5'>
-			{
-				technologies.map((tech: any) => {
-					const iconName = tech.icon;
-					const IconComponent = iconMap[iconName as keyof typeof iconMap];
-					return IconComponent ? (
-						<div class='flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-default'>
-							<IconComponent class='w-5 h-5 text-blue-400' />
-							<span class='text-sm font-medium text-gray-300'>{tech.text}</span>
-						</div>
-					) : null;
-				})
-			}
+	<div
+		class='flex flex-col justify-between w-[100%] sm:w[35%] group relative bg-[#43CFF4]/5 border-2 border-[#43CFF4]/10 rounded-xl overflow-hidden transition-all duration-300 hover:bg-[#43CFF4]/10 hover:shadow-2xl hover:shadow-[#43CFF4]/10 hover:border-[#43CFF4]/20 hover:-translate-y-2 border-anim'
+	>
+		<div class='relative overflow-hidden'>
+			<Image
+				src={bgImage}
+				alt={altImg}
+				class='w-full h-[300px] object-cover transition-transform duration-500 group-hover:scale-110'
+				loading='lazy'
+				draggable='false'
+			/>
+			<div
+				class='hidden md:flex justify-center items-center p-5 absolute inset-0 bg-[#0B0C17]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500'
+			>
+				<p class='text-[#DDF4FB] font-semibold text-[18px]'>{description}</p>
+			</div>
 		</div>
 
-		<div class='flex flex-col xl:flex-row gap-2 mt-5'>
-			<a
-				target='_blank'
-				href={gitHubUrl}
-				class='h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
-			>
-				<GithubIcon class='font-bold w-[30px] h-[30px]' />
-				<span class='text-[18px]'>Github</span>
-			</a>
-			<a
-				target='_blank'
-				href={webSiteUrl}
-				class='h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
-			>
-				<svg
-					width='32'
-					height='32'
-					viewBox='0 0 32 32'
-					fill='none'
-					xmlns='http://www.w3.org/2000/svg'
+		<div class='p-6'>
+			<h3 class='text-xl font-semibold text-[#DDF4FB] group-hover:text-[#43CFF4] transition-colors duration-300'>
+				{title}
+			</h3>
+			<p class='text-[#DDF4FB] text-sm md:hidden'>{description}</p>
+			<div class='flex flex-wrap gap-3 mt-5'>
+				{
+					technologies.map((tech: any) => {
+						const iconName = tech.icon;
+						const IconComponent = iconMap[iconName as keyof typeof iconMap];
+						return IconComponent ? (
+							<div class='flex items-center gap-2 px-3 py-2 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200 cursor-default'>
+								<IconComponent class='w-5 h-5 text-blue-400' />
+								<span class='text-sm font-medium text-gray-300'>{tech.text}</span>
+							</div>
+						) : null;
+					})
+				}
+			</div>
+
+			<div class='flex flex-col xl:flex-row gap-2 mt-5'>
+				<a
+					target='_blank'
+					href={gitHubUrl}
+					class='h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
 				>
-					<path
-						fill-rule='evenodd'
-						clip-rule='evenodd'
-						d='M12 9C11.7348 9 11.4804 8.89464 11.2929 8.70711C11.1054 8.51957 11 8.26522 11 8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7H24C24.2652 7 24.5196 7.10536 24.7071 7.29289C24.8947 7.48043 25 7.73478 25 8V20C25 20.2652 24.8947 20.5196 24.7071 20.7071C24.5196 20.8946 24.2652 21 24 21C23.7348 21 23.4804 20.8946 23.2929 20.7071C23.1054 20.5196 23 20.2652 23 20V10.4133L8.70669 24.7067C8.51712 24.8833 8.26639 24.9795 8.00732 24.9749C7.74825 24.9703 7.50107 24.8654 7.31786 24.6822C7.13464 24.4989 7.02969 24.2518 7.02512 23.9927C7.02055 23.7336 7.11671 23.4829 7.29335 23.2933L21.5867 9H12Z'
-						fill='currentColor'
-					></path>
-				</svg>
+					<GithubIcon class='font-bold w-[30px] h-[30px]' />
+					<span class='text-[18px]'>Github</span>
+				</a>
+				<a
+					target='_blank'
+					href={webSiteUrl}
+					class='h-[50px] flex items-center justify-center gap-3 cursor-pointer text-white font-semibold bg-gradient-to-r from-gray-800 to-black px-7 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:border-gray-800 hover:from-black hover:to-gray-900'
+				>
+					<svg
+						width='32'
+						height='32'
+						viewBox='0 0 32 32'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
+					>
+						<path
+							fill-rule='evenodd'
+							clip-rule='evenodd'
+							d='M12 9C11.7348 9 11.4804 8.89464 11.2929 8.70711C11.1054 8.51957 11 8.26522 11 8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7H24C24.2652 7 24.5196 7.10536 24.7071 7.29289C24.8947 7.48043 25 7.73478 25 8V20C25 20.2652 24.8947 20.5196 24.7071 20.7071C24.5196 20.8946 24.2652 21 24 21C23.7348 21 23.4804 20.8946 23.2929 20.7071C23.1054 20.5196 23 20.2652 23 20V10.4133L8.70669 24.7067C8.51712 24.8833 8.26639 24.9795 8.00732 24.9749C7.74825 24.9703 7.50107 24.8654 7.31786 24.6822C7.13464 24.4989 7.02969 24.2518 7.02512 23.9927C7.02055 23.7336 7.11671 23.4829 7.29335 23.2933L21.5867 9H12Z'
+							fill='currentColor'
+						></path>
+					</svg>
 
-				<span class='text-[18px]'>Website</span>
-			</a>
+					<span class='text-[18px]'>Website</span>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
