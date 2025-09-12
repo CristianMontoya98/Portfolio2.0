@@ -3,19 +3,22 @@ const { text, icon: Icon, iconClass, isNeon, link, download } = Astro.props;
 let buttonStyles = 'flex items-center justify-center text-[20px] font-bold rounded-full gap-2 cursor-pointer w-[189px] h-[34px]';
 if (isNeon) {
 	buttonStyles +=
-		' hover:scale-120 duration-200 ease shadow-[0px_0px_18px_0px_#43CFF4] bg-[#121427]  text-[#43CFF4]  hover:bg-[#43CFF4] hover:text-[#121427]';
+		' hover:scale-120 transition duration-300 ease-in-out shadow-[0px_0px_18px_0px_#43CFF4] bg-[#121427] text-[#43CFF4] hover:bg-[#43CFF4] hover:text-[#121427]';
 }
 ---
 
-<a
+<div
 	data-aos='zoom-in-down'
 	data-aos-delay='250'
-	href={link}
-	target='_blank'
-	type='button'
-	class={buttonStyles}
-	download='CristianMontoyaCV.pdf'
 >
-	{Icon && <Icon class={iconClass} />}
-	{text}
-</a>
+	<a
+		href={link}
+		target='_blank'
+		type='button'
+		class={buttonStyles}
+		download='CristianMontoyaCV.pdf'
+	>
+		{Icon && <Icon class={iconClass} />}
+		{text}
+	</a>
+</div>
