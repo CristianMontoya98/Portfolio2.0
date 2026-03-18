@@ -3,6 +3,7 @@ import ProjectCard from '../molecules/Project-card.astro';
 import weather from '../../assets/img/weather-desk.webp';
 import rickAndMortyApi from '../../assets/img/randm.webp';
 import cowboyBbop from '../../assets/img/cowboyshot.webp';
+import frontAtlas from '../../assets/img/front-atlas.webp';
 import { useTranslations } from '../../i18n/utils';
 import { languageList } from '../../i18n/ui';
 
@@ -37,15 +38,15 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 			delay='300'
 		/>
 		<ProjectCard
-			bgImage={rickAndMortyApi}
-			altImg='Imagen de app api Rick y Morty'
-			title={translateLabels('project.rickandmorty.title')}
-			description={translateLabels('project.rickandmorty.desc')}
-			gitHubUrl='https://github.com/CristianMontoya98/ApiRickMortyV2'
-			webSiteUrl='https://visualizerrickmorty.netlify.app/'
+			bgImage={frontAtlas}
+			altImg='Imagen de landing page front atlas'
+			title={translateLabels('project.frontAtlas.title')}
+			description={translateLabels('project.frontAtlas.desc')}
+			gitHubUrl='https://github.com/CristianMontoya98/front-atlas'
+			webSiteUrl='https://front-atlas.netlify.app/'
 			technologies={[
-				{ icon: 'ReactIcon', text: 'React js' },
-				{ icon: 'CssIcon', text: 'Css' },
+				{ icon: 'AstroIcon', text: 'Astro' },
+				{ icon: 'TailwindIcon', text: 'Tailwind' },
 			]}
 			delay='500'
 		/>
