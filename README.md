@@ -5,6 +5,9 @@ This is my personal front end web portfolio, here you can see:
 - 👨 About me information.
 - 📞 Contact information.
 
+<img width="1920" height="1440" alt="portfolioshot" src="https://github.com/user-attachments/assets/6264f7cd-1048-4662-8e35-cbf32c6429dc" />
+
+
 ## 🛠️ Tech stack
 
 - 🚀 [Astro js](https://astro.build)
