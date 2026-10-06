@@ -5,6 +5,9 @@ export const languageList = {
 
 export const labels = {
     es: {
+        'seo.title': 'Cristian Montoya | Desarrollador Front-end',
+        'seo.description': 'Portafolio de Cristian Montoya, desarrollador web Front-end con más de 3 años de experiencia en Angular, Next.js, React, Tailwind y Sass. Proyectos, experiencia y contacto.',
+        'seo.jobTitle': 'Desarrollador web Front-end',
         'nav.home': 'Inicio',
         'nav.experience': 'Experiencia',
         'nav.about': 'Sobre mí',
@@ -34,6 +37,9 @@ export const labels = {
         'footer.buildwith': 'Construido con Astro'
     },
     en: {
+        'seo.title': 'Cristian Montoya | Front-end Developer',
+        'seo.description': 'Portfolio of Cristian Montoya, Front-end web developer with over 3 years of experience in Angular, Next.js, React, Tailwind and Sass. Projects, experience and contact.',
+        'seo.jobTitle': 'Front-end web developer',
         'nav.home': 'Home',
         'nav.experience': 'Experience',
         'nav.about': 'About me',

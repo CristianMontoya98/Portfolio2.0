@@ -4,12 +4,42 @@ import '../../styles/global.css';
 import Header from '../molecules/Header.astro';
 import ScrollToTop from '../atoms/Scroll-to-top.astro';
 import 'aos/dist/aos.css';
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+
 interface Props {
 	title?: string;
+	description?: string;
 }
 
-const { title = 'Cristian Montoya' } = Astro.props;
 const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+const {
+	title = translateLabels('seo.title'),
+	description = translateLabels('seo.description'),
+} = Astro.props;
+
+const siteUrl = Astro.site?.href.replace(/\/$/, '') || 'https://cristianmontoya.dev';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = new URL('/og-image.jpg', siteUrl).href;
+const alternateEs = new URL('/es/', siteUrl).href;
+const alternateEn = new URL('/en/', siteUrl).href;
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Cristian Montoya',
+	url: siteUrl,
+	image: ogImage,
+	jobTitle: translateLabels('seo.jobTitle'),
+	email: 'mailto:chrimonlo@gmail.com',
+	sameAs: [
+		'https://www.linkedin.com/in/cristian-montoya-lopez',
+		'https://github.com/CristianMontoya98',
+	],
+	knowsAbout: ['Angular', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Sass', 'Front-end development'],
+};
 ---
 
 <!doctype html>
@@ -18,7 +48,7 @@ const currentLang = Astro.currentLocale || 'es';
 		<meta charset='UTF-8' />
 		<meta
 			name='viewport'
-			content='width=device-width'
+			content='width=device-width, initial-scale=1'
 		/>
 		<link
 			rel='icon'
@@ -29,7 +59,99 @@ const currentLang = Astro.currentLocale || 'es';
 			name='generator'
 			content={Astro.generator}
 		/>
+
 		<title>{title}</title>
+		<meta
+			name='description'
+			content={description}
+		/>
+		<meta
+			name='author'
+			content='Cristian Montoya'
+		/>
+		<meta
+			name='robots'
+			content='index, follow, max-image-preview:large'
+		/>
+		<link
+			rel='canonical'
+			href={canonicalUrl}
+		/>
+
+		<link
+			rel='alternate'
+			hreflang='es'
+			href={alternateEs}
+		/>
+		<link
+			rel='alternate'
+			hreflang='en'
+			href={alternateEn}
+		/>
+		<link
+			rel='alternate'
+			hreflang='x-default'
+			href={alternateEs}
+		/>
+
+		<meta
+			property='og:type'
+			content='website'
+		/>
+		<meta
+			property='og:site_name'
+			content='Cristian Montoya'
+		/>
+		<meta
+			property='og:locale'
+			content={currentLang === 'es' ? 'es_ES' : 'en_US'}
+		/>
+		<meta
+			property='og:locale:alternate'
+			content={currentLang === 'es' ? 'en_US' : 'es_ES'}
+		/>
+		<meta
+			property='og:title'
+			content={title}
+		/>
+		<meta
+			property='og:description'
+			content={description}
+		/>
+		<meta
+			property='og:url'
+			content={canonicalUrl}
+		/>
+		<meta
+			property='og:image'
+			content={ogImage}
+		/>
+		<meta
+			property='og:image:alt'
+			content={title}
+		/>
+
+		<meta
+			name='twitter:card'
+			content='summary_large_image'
+		/>
+		<meta
+			name='twitter:title'
+			content={title}
+		/>
+		<meta
+			name='twitter:description'
+			content={description}
+		/>
+		<meta
+			name='twitter:image'
+			content={ogImage}
+		/>
+
+		<script
+			type='application/ld+json'
+			set:html={JSON.stringify(structuredData)}
+		/>
 	</head>
 	<body>
 		<Header />
