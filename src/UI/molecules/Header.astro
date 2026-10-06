@@ -4,7 +4,6 @@ import logo from '../../assets/img/logo.svg';
 import menu from '../../assets/img/menu.svg';
 import { useTranslations } from '../../i18n/utils';
 import { languageList } from '../../i18n/ui';
-import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
 import LanguageSelector from '../atoms/Language-selector.astro';
 
 const currentLang = Astro.currentLocale || 'es';
@@ -95,16 +94,20 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 </header>
 
 <script>
+	let headerScrollHandler: (() => void) | null = null;
+	let navObserver: IntersectionObserver | null = null;
+
 	function handleHeaderScroll() {
 		let lastScrollTop = 0;
-		const header = document.getElementById('header');
 
 		return () => {
+			const header = document.getElementById('header');
 			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 			if (scrollTop <= 100) {
 				header?.classList.remove('-translate-y-full');
 				header?.classList.remove('backdrop-blur-md', 'shadow-lg');
+				lastScrollTop = scrollTop;
 				return;
 			}
 
@@ -140,18 +143,19 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 		};
 
 		navLinks.forEach((link) => {
-			link.addEventListener('click', function (this: HTMLElement, e: Event) {
+			link.addEventListener('click', function (this: HTMLElement) {
 				addActiveStyles(this);
 			});
 		});
 
 		mobileNavLinks.forEach((link) => {
-			link.addEventListener('click', function (this: HTMLElement, e: Event) {
+			link.addEventListener('click', function (this: HTMLElement) {
 				addActiveStyles(this);
 			});
 		});
 
-		const observer = new IntersectionObserver(
+		navObserver?.disconnect();
+		navObserver = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					const id = entry.target.getAttribute('id');
@@ -171,7 +175,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 			}
 		);
 		sections.forEach((section) => {
-			observer.observe(section);
+			navObserver?.observe(section);
 		});
 	}
 
@@ -206,8 +210,13 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 		});
 	}
 
-	window.addEventListener('scroll', handleHeaderScroll());
-	document.addEventListener('DOMContentLoaded', () => {
+	document.addEventListener('astro:page-load', () => {
+		if (headerScrollHandler) {
+			window.removeEventListener('scroll', headerScrollHandler);
+		}
+		headerScrollHandler = handleHeaderScroll();
+		window.addEventListener('scroll', headerScrollHandler);
+		document.body.style.overflow = '';
 		handleNavSelection();
 		handleMobileMenu();
 	});

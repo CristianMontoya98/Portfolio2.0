@@ -18,22 +18,33 @@ let scrollLabel = currentLang === 'es' ? "after:content-['Ir_arriba']" : "after:
 </button>
 
 <script>
-	const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+	let scrollVisibilityHandler: (() => void) | null = null;
 
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 300) {
-			scrollToTopBtn?.classList.remove('opacity-0', 'invisible');
-			scrollToTopBtn?.classList.add('opacity-100', 'visible');
-		} else {
-			scrollToTopBtn?.classList.add('opacity-0', 'invisible');
-			scrollToTopBtn?.classList.remove('opacity-100', 'visible');
+	document.addEventListener('astro:page-load', () => {
+		const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+		if (scrollVisibilityHandler) {
+			window.removeEventListener('scroll', scrollVisibilityHandler);
 		}
-	});
 
-	scrollToTopBtn?.addEventListener('click', () => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
+		scrollVisibilityHandler = () => {
+			if (window.scrollY > 300) {
+				scrollToTopBtn?.classList.remove('opacity-0', 'invisible');
+				scrollToTopBtn?.classList.add('opacity-100', 'visible');
+			} else {
+				scrollToTopBtn?.classList.add('opacity-0', 'invisible');
+				scrollToTopBtn?.classList.remove('opacity-100', 'visible');
+			}
+		};
+
+		window.addEventListener('scroll', scrollVisibilityHandler);
+		scrollVisibilityHandler();
+
+		scrollToTopBtn?.addEventListener('click', () => {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
 		});
 	});
 </script>

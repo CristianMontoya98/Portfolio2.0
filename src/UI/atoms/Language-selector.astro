@@ -1,58 +1,34 @@
 ---
 import LanguageIcon from '../../assets/icons/LanguageIcon.astro';
+
+const currentLang = Astro.currentLocale || 'es';
+const currentPath = Astro.url.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/(es|en)/, '') || '/';
+const esHref = `/es${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`;
+const enHref = `/en${pathWithoutLocale === '/' ? '/' : pathWithoutLocale}`;
+const activeClass = 'bg-[#43CFF4]/50 rounded-md shadow-[4px_4px_18px_0px_#121427]';
+const baseClass =
+	'font-bold text-sm p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md hover:shadow-[4px_4px_18px_0px_#121427] transition-colors duration-200';
 ---
 
 <div class='flex items-center gap-2 bg-[#43CFF4]/10 backdrop-blur-sm border border-[#43CFF4]/20 text-[#DDF4FB] rounded-lg px-4 py-[5px]'>
 	<LanguageIcon class='w-[24px] h-[24px]' />
-	<button
-		id='es-button'
-		class='font-bold text-sm p-2 ms-3 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md hover:shadow-[4px_4px_18px_0px_#121427]'
+	<a
+		href={esHref}
+		hreflang='es'
+		data-i18n-switch
+		aria-current={currentLang === 'es' ? 'page' : undefined}
+		class:list={[baseClass, 'ms-3', currentLang === 'es' && activeClass]}
 	>
 		ES
-	</button>
-	<button
-		id='en-button'
-		class='font-bold text-sm p-2 cursor-pointer hover:bg-[#43CFF4]/50 hover:rounded-md hover:shadow-[4px_4px_18px_0px_#121427]'
+	</a>
+	<a
+		href={enHref}
+		hreflang='en'
+		data-i18n-switch
+		aria-current={currentLang === 'en' ? 'page' : undefined}
+		class:list={[baseClass, currentLang === 'en' && activeClass]}
 	>
 		EN
-	</button>
+	</a>
 </div>
-<script>
-	function handleLanguageToggle() {
-		const spanishToggle = document.getElementById('es-button');
-		const englishToggle = document.getElementById('en-button');
-
-		function updateActiveStyles() {
-			const currentPath = window.location.pathname;
-			const isSpanish = currentPath.startsWith('/es') || (!currentPath.startsWith('/en') && !currentPath.startsWith('/es'));
-			const isEnglish = currentPath.startsWith('/en');
-
-			spanishToggle?.classList.remove('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
-			englishToggle?.classList.remove('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
-
-			if (isSpanish) {
-				spanishToggle?.classList.add('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
-			} else if (isEnglish) {
-				englishToggle?.classList.add('bg-[#43CFF4]/50', 'rounded-md', 'shadow-[4px_4px_18px_0px_#121427]');
-			}
-		}
-		updateActiveStyles();
-		spanishToggle?.addEventListener('click', () => {
-			const currentPath = window.location.pathname;
-			let newPath = '/es' + currentPath.substring(3);
-			if (currentPath.startsWith('/en')) {
-				window.location.href = newPath;
-			}
-		});
-		englishToggle?.addEventListener('click', () => {
-			const currentPath = window.location.pathname;
-			let newPath = '/en' + currentPath.substring(3);
-			if (currentPath.startsWith('/es')) {
-				window.location.href = newPath;
-			}
-		});
-	}
-	document.addEventListener('DOMContentLoaded', () => {
-		handleLanguageToggle();
-	});
-</script>

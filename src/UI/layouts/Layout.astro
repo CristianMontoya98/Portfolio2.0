@@ -4,6 +4,7 @@ import '../../styles/global.css';
 import Header from '../molecules/Header.astro';
 import ScrollToTop from '../atoms/Scroll-to-top.astro';
 import 'aos/dist/aos.css';
+import { ClientRouter } from 'astro:transitions';
 import { useTranslations } from '../../i18n/utils';
 import { languageList } from '../../i18n/ui';
 
@@ -162,6 +163,7 @@ const structuredData = {
 			type='application/ld+json'
 			set:html={JSON.stringify(structuredData)}
 		/>
+		<ClientRouter />
 	</head>
 	<body>
 		<Header />
@@ -169,10 +171,102 @@ const structuredData = {
 		<slot />
 		<script>
 			import AOS from 'aos';
-			AOS.init({
-				duration: 800,
-				easing: 'ease-in-out',
-				once: false,
+
+			const SCROLL_KEY = 'i18n-scroll-y';
+			const SKIP_AOS_KEY = 'i18n-skip-aos';
+
+			function getLocale(pathname: string) {
+				return pathname.match(/^\/(es|en)(?:\/|$)/)?.[1] ?? null;
+			}
+
+			function isLanguageSwitch(fromPath: string, toPath: string) {
+				const fromLocale = getLocale(fromPath);
+				const toLocale = getLocale(toPath);
+				return Boolean(fromLocale && toLocale && fromLocale !== toLocale);
+			}
+
+			function isInViewport(el: Element) {
+				const rect = el.getBoundingClientRect();
+				const margin = 80;
+				return rect.top < window.innerHeight + margin && rect.bottom > -margin;
+			}
+
+			function revealVisibleAosElements() {
+				document.querySelectorAll('[data-aos]').forEach((el) => {
+					if (!isInViewport(el)) return;
+					el.setAttribute('data-aos-delay', '0');
+					el.setAttribute('data-aos-duration', '0');
+					el.classList.add('aos-init', 'aos-animate');
+				});
+			}
+
+			function initAos() {
+				AOS.init({
+					duration: 800,
+					easing: 'ease-in-out',
+					once: false,
+				});
+				AOS.refreshHard();
+			}
+
+			document.addEventListener(
+				'click',
+				(event) => {
+					const target = event.target as HTMLElement | null;
+					const switchLink = target?.closest?.('[data-i18n-switch]');
+					if (!switchLink) return;
+
+					sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+					sessionStorage.setItem(SKIP_AOS_KEY, '1');
+				},
+				true
+			);
+
+			document.addEventListener('astro:before-preparation', (event) => {
+				const preparationEvent = event as Event & { from: URL; to: URL; sourceElement?: Element | null };
+				const fromLangSwitch =
+					preparationEvent.sourceElement?.closest?.('[data-i18n-switch]') ||
+					isLanguageSwitch(preparationEvent.from.pathname, preparationEvent.to.pathname);
+
+				if (fromLangSwitch) {
+					sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+					sessionStorage.setItem(SKIP_AOS_KEY, '1');
+				} else {
+					sessionStorage.removeItem(SCROLL_KEY);
+					sessionStorage.removeItem(SKIP_AOS_KEY);
+				}
+			});
+
+			document.addEventListener('astro:after-swap', () => {
+				const savedScroll = sessionStorage.getItem(SCROLL_KEY);
+				if (savedScroll !== null) {
+					window.scrollTo({ left: 0, top: Number(savedScroll), behavior: 'instant' });
+					sessionStorage.removeItem(SCROLL_KEY);
+				}
+
+				if (sessionStorage.getItem(SKIP_AOS_KEY) === '1') {
+					revealVisibleAosElements();
+				}
+			});
+
+			document.addEventListener('astro:page-load', () => {
+				const isLanguageNavigation = sessionStorage.getItem(SKIP_AOS_KEY) === '1';
+				sessionStorage.removeItem(SKIP_AOS_KEY);
+
+				if (isLanguageNavigation) {
+					document.querySelectorAll('[data-aos]').forEach((el) => {
+						if (!isInViewport(el)) return;
+						el.setAttribute('data-aos-delay', '0');
+						el.setAttribute('data-aos-duration', '0');
+					});
+				}
+
+				initAos();
+
+				if (isLanguageNavigation) {
+					revealVisibleAosElements();
+					requestAnimationFrame(() => revealVisibleAosElements());
+				}
 			});
 		</script>
 	</body>
